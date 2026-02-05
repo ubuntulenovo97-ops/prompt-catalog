@@ -1,0 +1,12 @@
+name = "prompt-catalog"
+type = "javascript"
+account_id = ""
+workers_dev = true
+route = ""
+zone_id = ""
+compatibility_date = "2024-12-16"
+
+[env.production]
+name = "prompt-catalog-prod"
+route = "example.com/*"
+zone_id = ""
