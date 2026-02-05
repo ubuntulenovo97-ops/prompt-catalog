@@ -11,6 +11,7 @@ export function usePrompts() {
   const [prompts, setPrompts] = useState<Prompt[]>(SAMPLE_PROMPTS);
   const [filters, setFilters] = useState<FilterState>({
     category: 'all',
+    promptType: 'all',
     searchTerm: '',
     sortBy: 'newest',
   });
@@ -21,6 +22,11 @@ export function usePrompts() {
     // Filter by category
     if (filters.category !== 'all') {
       result = result.filter((p) => p.category === filters.category);
+    }
+
+    // Filter by prompt type
+    if (filters.promptType !== 'all') {
+      result = result.filter((p) => p.promptType === filters.promptType);
     }
 
     // Filter by search term

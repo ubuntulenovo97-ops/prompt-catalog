@@ -30,11 +30,20 @@ export function PromptCard({ prompt, onDelete, onViewFull }: PromptCardProps) {
 
   return (
     <div className="group relative flex flex-col rounded-2xl bg-card text-card-foreground shadow-sm transition-all duration-300 hover:shadow-md cursor-pointer" onClick={() => onViewFull?.(prompt)}>
-      {/* Category Badge */}
-      <div className="flex items-center gap-2 border-b border-border px-5 py-4">
-        <span className="text-xl">{category.icon}</span>
-        <span className="label text-sm font-medium" style={{ color: category.color }}>
-          {category.label}
+      {/* Category Badge and Prompt Type */}
+      <div className="flex items-center justify-between border-b border-border px-5 py-4">
+        <div className="flex items-center gap-2">
+          <span className="text-xl">{category.icon}</span>
+          <span className="label text-sm font-medium" style={{ color: category.color }}>
+            {category.label}
+          </span>
+        </div>
+        <span className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold ${
+          prompt.promptType === 'positive'
+            ? 'bg-green-100 text-green-700'
+            : 'bg-red-100 text-red-700'
+        }`}>
+          {prompt.promptType === 'positive' ? '✅ Positive' : '❌ Negative'}
         </span>
       </div>
 

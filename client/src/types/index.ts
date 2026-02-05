@@ -4,12 +4,14 @@
  */
 
 export type PromptCategory = 'image' | 'text' | 'strategy';
+export type PromptType = 'positive' | 'negative';
 
 export interface Prompt {
   id: string;
   title: string;
   content: string;
   category: PromptCategory;
+  promptType: PromptType;
   description: string;
   createdAt: Date;
   updatedAt: Date;
@@ -26,6 +28,7 @@ export interface CategoryConfig {
 
 export interface FilterState {
   category: PromptCategory | 'all';
+  promptType: PromptType | 'all';
   searchTerm: string;
   sortBy: 'newest' | 'oldest' | 'alphabetical';
 }

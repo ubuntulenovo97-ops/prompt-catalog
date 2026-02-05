@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { PromptCard } from '@/components/PromptCard';
 import { PromptModal } from '@/components/PromptModal';
 import { CategoryFilter } from '@/components/CategoryFilter';
+import { PromptTypeFilter } from '@/components/PromptTypeFilter';
 import { SearchBar } from '@/components/SearchBar';
 import { SortDropdown } from '@/components/SortDropdown';
 import { usePrompts } from '@/hooks/usePrompts';
@@ -61,12 +62,22 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Category Filter */}
-        <div className={`mb-8 ${showMobileFilters ? 'block' : 'hidden md:block'}`}>
-          <CategoryFilter
-            activeCategory={filters.category}
-            onCategoryChange={(cat) => updateFilters({ category: cat })}
-          />
+        {/* Filters */}
+        <div className={`mb-8 space-y-4 ${showMobileFilters ? 'block' : 'hidden md:block'}`}>
+          <div>
+            <h3 className="mb-3 text-sm font-semibold text-foreground">Categoria</h3>
+            <CategoryFilter
+              activeCategory={filters.category}
+              onCategoryChange={(cat) => updateFilters({ category: cat })}
+            />
+          </div>
+          <div>
+            <h3 className="mb-3 text-sm font-semibold text-foreground">Tipo Prompt</h3>
+            <PromptTypeFilter
+              activeType={filters.promptType}
+              onTypeChange={(type) => updateFilters({ promptType: type })}
+            />
+          </div>
         </div>
 
         {/* Results Info */}
